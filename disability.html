@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8" ng-app="xmp.app"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9" ng-app="xmp.app"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" ng-app="xmp.app">
+<!--<![endif]-->
+
+<head>
+    <title>Metlife</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Icon -->
+    <link rel="apple-touch-icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="http://metonlinecalc.com/assets/plugins/font-awesome/css/font-awesome.min.css">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="http://metonlinecalc.com/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/products.css">
+
+    <!-- XMPie CSS library -->
+    <link href="deps/xmp/css/xmp.css" rel="stylesheet" media="screen">
+
+    <!-- XMPie XMPL library -->
+    <script src="deps/jquery/jquery-1.10.2.min.js"></script>
+    <script src="deps/xmp/js/xmp.min.js"></script>
+    <script src="xmpcfg.js"></script>
+</head>
+
+<body ng-controller="GlobalController">
+<div ng-controller="XMPAnonymousPage" xmp-cloak>
+
+    <div class="global-header" ng-include="'templates/global/header.html'"></div>
+
+    <div class="landing-banner">
+        <div class="row wrapper">
+            <div class="landing-banner-txt">
+                <h1>Calculate your premium</h1>
+            </div>
+        </div>
+        <div class="landing-banner-overlay">
+            <div class="landing-banner-col"></div>
+            <div class="landing-banner-col"></div>
+            <div class="landing-banner-col"></div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div data-comp-id="product-card-tile">
+        <div class="row wrapper">
+            <div class="product-card">
+                <div class="title text-center bg-brand-1st white">
+                    <h3>Disability Income Gap Insurance</h3>
+                </div>
+                <div class="content">
+                    <div class="content-body">
+
+                        <form name="calc_form">
+							<h1><strong>Life's Risks</strong></h1>
+							<p>What are the odds of needing to use insurance in an average year?  People often insure against risks that are significantly less likely to occur than a disability.</p>
+							<p><strong>Fire and Theft:</strong> 1 in 238 housing units catch fire or experience theft<sup>1</sup><br>
+							<strong>Car Accidents:</strong> 1 in 147 people get injured in motor vehicle accidents<sup>2</sup><br>
+							<strong>Death:</strong> 1 in 115 people die<sup>3</sup><br>
+							<strong>Disability:</strong> 1 in 8 people, age 16 and over suffer from a disaiblity<sup>4</sup></p>
+							<p>TriNet offers a Disability Income Gap Insurance (DIGI) policy that covers up to 67% of your total income.   MetLife assumes all TriNet WSEs have $12,500/mo. of group LTD coverage for this offer. Please enter your total annual compensation below to see if you have a potential gap in your disability coverage.</p>
+
+                            <div class="border-top" style="padding: 20px;">
+
+                                <p>Enter your information below to get your rate.</p>
+
+                                <div class="row form-row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-user-grp">
+                                            <div class="form-icon-wrapper">
+                                                <svg class="icon">
+                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
+                                                        <title>select-arrows</title>
+                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
+                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
+                                                    </svg>
+                                                </svg>
+                                                <select class="form-user-ctrl user-select" id="age" name="age" ng-model="calcVars.age" ng-change="updateVals()" required>
+                                                    <option value="" disabled="disabled">Age</option>
+                                                    <option ng-repeat="n in $parent.range(18,64,1)" value="{{n}}">{{n}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-user-grp">
+                                            <input type="text" style="margin: 10px 0px 5px 0px;" id="salary_display" name="salary_display" ng-model="salaryDisplay" placeholder="Base Annual Earnings" ng-keypress="formatSalary();" ng-keydown="formatSalary();" ng-keyup="formatSalary();" ng-change="formatSalary();" maxlength="14" required/>
+                                            <div style="color: #A7A8AA;">Do not include overtime, bonus, commissions etc.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-user-grp">
+                                            <div class="form-icon-wrapper">
+                                                <svg class="icon">
+                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
+                                                        <title>select-arrows</title>
+                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
+                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
+                                                    </svg>
+                                                </svg>
+                                                <select class="form-user-ctrl user-select" id="amount" name="amount" ng-model="calcVars.amount" ng-change="updateVals()" required>
+                                                    <option value="" disabled="disabled">Monthly Benefit Election Amount</option>
+                                                    <option ng-repeat="n in $parent.range(amtMin,amtMax,amtInc)" value="{{n}}">${{n | number}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-user-grp">
+                                            <div class="form-icon-wrapper">
+                                                <svg class="icon">
+                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
+                                                        <title>select-arrows</title>
+                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
+                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
+                                                    </svg>
+                                                </svg>
+                                                <select class="form-user-ctrl user-select" id="elimination_period" name="elimination_period" ng-model="calcVars.elimination_period" ng-change="updateVals()" required>
+                                                    <option value="" disabled="disabled">Elimination Period</option>
+                                                    <option value="60">60 Days</option>
+                                                    <option value="90">90 Days</option>
+                                                    <option value="120">120 Days</option>
+                                                    <option value="150">150 Days</option>
+                                                    <option value="180">180 Days</option>
+                                                </select>
+                                            </div>
+                                            <div style="color: #A7A8AA;">The amount of time you must be totally disabled due to a covered sickness or injury before benefits will begin to be paid, also known as the waiting period.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-user-grp">
+                                            <div class="form-icon-wrapper">
+                                                <svg class="icon">
+                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
+                                                        <title>select-arrows</title>
+                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
+                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
+                                                    </svg>
+                                                </svg>
+                                                <select class="form-user-ctrl user-select" id="benefit_duration" name="benefit_duration" ng-model="calcVars.benefit_duration" ng-change="updateVals()" required>
+                                                    <option value="" disabled="disabled">Maximum Benefit Period</option>
+                                                    <option value="short">Short-Term Plan</option>
+                                                    <option value="5">5-Year Plan</option>
+                                                    <option value="long">Long-Term Plan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br/>
+
+                                <div class="row form-row">
+                                    <div class="col-xs-6 col-sm-3">
+                                        <div class="form-user-grp">
+                                            <a class="btn-brand-6th calc-submit" role="button" ng-click="calcSubmit()" ng-disabled="calc_form.$invalid">Calculate</a>
+                                        </div>
+                                    </div>
+									<div class="col-xs-6 col-sm-3">
+                                        <div class="form-user-grp">
+                                            <a href="https://amba-mags.com/mags/enroll/?APPLICATION=MAGS&FUNCTIONALITY=ENROLLMENT&FIRM=NYSUT&MULTCLIENT=YES&CLIENT=EPS_NYSUT&OFFERING=DI&utm_source=nysut&utm_medium=referral&utm_campaign=105757-dip&utm_content=ratecalculator&PROMOCODE=5479310015301753018" class="btn-brand-6th calc-submit" role="button" target="_blank">ENROLL</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-row" ng-if="calc_form.$invalid">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div id="calc-error" style="color: #A7A8AA;">Please fill out all fields</div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-row" ng-if="showRates">
+                                    <div class="col-xs-12">
+                                        <br/>
+
+                                        <p><strong>Note:</strong> Payroll deduction option is only available in local associations that have made the necessary payroll deduction arrangements for NYSUT Member Benefits-endorsed programs.</p>
+
+                                        <table class="rates-table">
+                                            <tr>
+                                                <th>Payment Method</th>
+                                                <th>Payroll Deduction<sup>1</sup></th>
+                                                <th>Direct Bill</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Monthly Rate Per $50</strong></td>
+                                                <td>{{calcRate.base.payroll_deduct | currency}}</td>
+                                                <td>{{calcRate.base.direct_bill | currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Monthly Premium</strong></td>
+                                                <td>{{calcRate.monthly.payroll_deduct | currency}}</td>
+                                                <td>{{calcRate.monthly.direct_bill | currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Annual Premium</strong></td>
+                                                <td>{{calcRate.annual.payroll_deduct | currency}}</td>
+                                                <td>{{calcRate.annual.direct_bill | currency}}</td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                                <div ng-if="showRates">
+                                    <span style="font-size: 12px; line-height: 10px; color: #757878;">1. Payroll Deduction includes a 20% discount for the Long-Term and 5-Year plans.</span>
+                                </div>
+
+                            </div>
+
+                            <div class="border-top" style="padding: 20px;">
+								<p>To review your personalized Disability Insurance Gap Insurance offer, click <a href="" target="_blank">here</a></p>
+								<p>To schedule an appointment with a Lenox Relationship Manager, click <a href="" target="_blank">here</a></p>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="(general_vars.disclaimer_notes !== '' && general_vars.disclaimer_notes !== undefined) || (general_vars.disclaimer_legal !== '' && general_vars.disclaimer_legal !== undefined)" class="disclaimer" ng-include="'templates/global/disclaimer-ltd.html'"></div>
+    <div class="bg-gray-1st global-footer" ng-include="'templates/marketing/marketing_footer.html'"></div>
+</div>
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="http://metonlinecalc.com/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- JS Page Level -->
+<script type="text/javascript" src="js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/moment-timezone-with-data.min.js"></script>
+
+<!-- JS Customization -->
+<script src="js/global/global.js"></script>
+<script src="js/marketing/disability.js"></script>
+
+</body>
+</html>

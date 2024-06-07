@@ -1,0 +1,142 @@
+{
+	"general_vars": {
+		"association_name": "[insert association]",
+		"contact_num": "[1-800-###-####]",
+		"admin_name": "[your plan administrator / XYZ Association / XYZ Third Party Administrator]",
+		"admin_contact_num": "[1-###-###-####]",
+		"admin_addr1": "[ADDRESS]",
+		"admin_addr2": "[CITY, STATE ZIP]",
+		"disclaimer_contact_num": "[1-###-###-####]",
+		"policy_name": "[GPNP99]",
+		"policy_num": "[######-1-G]",
+		"excluded_states": ["AK", "CNMI", "GU", "ME", "MT", "OR", "SD", "VI", "WA"]
+	},
+	"life_vars": {
+		"lang": {
+			"0": {
+				"en": "Calculate your premium",
+				"es": "Calcule su prima"
+			},
+			"1": {
+				"en": "Optional and Dependent Life Insurance",
+				"es": "Seguro de vida opcional y para dependientes"
+			},
+			"2": {
+				"en": "English",
+				"es": "Inglés"
+			},
+			"3": {
+				"en": "Spanish",
+				"es": "Español"
+			},
+			"4a": {
+				"en": "Learn more about this plan - view",
+				"es": "Para obtener más información sobre este plan, consulte el"
+			},
+			"4b": {
+				"en": "https://www.metlife.com/content/dam/metlifecom/us/homepage/teamsters-local-237/english/Teamsters-Local-237-EnrollSmart-Plan-Summary-Final-exp0422-V3.pdf",
+				"es": "https://www.metlife.com/content/dam/metlifecom/us/homepage/teamsters-local-237/spanish/Teamsters-Local-237_EnrollSmart_Plan-Summary-Final-exp0621_Spanish-US-V3.pdf"
+			},
+			"4c": {
+				"en": "Plan Summary",
+				"es": "Resumen del plan"
+			},
+			"5": {
+				"en": "Enter your information below to get your initial monthly rate.",
+				"es": "Ingrese su información a continuación para obtener su tarifa mensual."
+			},
+			"6a": {
+				"en": "Age",
+				"es": "Edad"
+			},
+			"6b": {
+				"en": "24 & Younger",
+				"es": "24 años y menos"
+			},
+			"6c": {
+				"en": "75 & Above",
+				"es": "75 años y más"
+			},
+			"7": {
+				"en": "Coverage Amount",
+				"es": "Monto de cobertura"
+			},
+			"8": {
+				"en": "Due to your selected age, you’re only eligible for 65% of the life insurance coverage. See Plan Summary for details.",
+				"es": "De acuerdo a la edad ingresada, usted es apto para obtener un 65 % de la cobertura de seguro de vida. Consulte el Resumen de su plan para ver los detalles."
+			},
+			"9": {
+				"en": "Due to your selected age, you’re only eligible for 50% of the life insurance coverage. See Plan Summary for details.",
+				"es": "De acuerdo a la edad ingresada, usted es elegible solo para un 50 % de la cobertura del seguro de vida. Consulte el Resumen de su plan para ver los detalles."
+			},
+			"10": {
+				"en": "Dependent spouse/domestic partner",
+				"es": "Cónyuge o pareja de hecho dependiente"
+			},
+			"11a": {
+				"en": "Age",
+				"es": "Edad"
+			},
+			"11b": {
+				"en": "24 & Younger",
+				"es": "24 años y menos"
+			},
+			"11c": {
+				"en": "75 & Above",
+				"es": "75 años y más"
+			},
+			"12": {
+				"en": "Coverage Amount",
+				"es": "Monto de cobertura"
+			},
+			"13": {
+				"en": "Due to your spouse/domestic partner's selected age, he or she is only eligible for 65% of the life insurance coverage. See Plan Summary for details.",
+				"es": "De acuerdo a la edad ingresada de su cónyuge o pareja de hecho, es apto para obtener solo un 65 % de la cobertura de seguro de vida. Consulte el Resumen del plan para ver los detalles."
+			},
+			"14": {
+				"en": "Due to your spouse/domestic partner's selected age, he or she is only eligible for 50% of the life insurance coverage. See Plan Summary for details.",
+				"es": "De acuerdo a la edad ingresada de su cónyuge o pareja de hecho, es apto para obtener un 50 % de la cobertura de seguro de vida. Consulte el Resumen del plan para ver los detalles."
+			},
+			"15": {
+				"en": "Dependent child(ren)",
+				"es": "Hijos dependientes"
+			},
+			"16": {
+				"en": "Calculate",
+				"es": "Calcular"
+			},
+			"17": {
+				"en": "Monthly Cost to You",
+				"es": "Costo mensual que usted paga"
+			},
+			"18": {
+				"en": "The cost of coverage may vary slightly due to rounding.",
+				"es": "El costo de la cobertura puede variar mínimamente debido al redondeo."
+			},
+			"19": {
+				"en": "Changes in Your Cost of lnsurance Rates/Premium",
+				"es": "Cambios en el costo de sus tarifas o primas de seguro"
+			},
+			"20": {
+				"en": "The cost or insurance varies depending upon the amount of coverage, your age and benefits selected. Additionally, cost will increase as you get older. Your current rates are guaranteed until the policy renewal date. At the renewal date, rates will be recalculated and may change. Rates will also change and can increase if you leave your employer and choose to continue your coverage.",
+				"es": "El costo del seguro varía de acuerdo con el monto de la cobertura, la edad de solicitante y los beneficios seleccionados. Además, el costo aumentará a medida que usted se hace mayor. Sus tarifas actuales se garantizan hasta la fecha de renovación de la póliza. Las tarifas se calcularán nuevamente en la fecha de renovación y pueden cambiar. También cambiarán sus tarifas si cesa la relación laboral con su empleador y decide continuar con la cobertura."
+			},
+			"21": {
+				"en": "Like most group insurance policies, MetLife group life insurance policies contain certain exclusions, limitations and requirements for maintaining coverage in force. Any such exclusions, limitations and requirements would be described in the life insurance certificate.",
+				"es": "Al igual que la mayoría de las pólizas de seguro colectivo, las pólizas de seguro de vida colectivo de MetLife contienen ciertas exclusiones, limitaciones y requisitos para que se mantengan vigentes. Tales exclusiones, limitaciones y requisitos se describirán en el certificado de seguro de vida."
+			},
+			"22a": {
+				"en": "Please fill out all fields",
+				"es": "Complete todos los campos"
+			},
+			"22b": {
+				"en": "The maximum amount of coverage must not exceed the Member's benefit",
+				"es": "El monto máximo de cobertura no debe exceder el beneficio del miembro"
+			},
+			"23": {
+				"en": "L0420002817[exp0422][All States][DC,GU,MP,PR,VI]",
+				"es": "L0520003558[exp0422][All States][DC,GU,MP,PR,VI]"
+			}
+		}
+	}
+}

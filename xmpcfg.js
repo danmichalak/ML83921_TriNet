@@ -1,0 +1,1 @@
+var xmpcfg = {access: { accessToken: '63a53d4a-e9ee-4288-b528-227d5412a07f_9d5e29b9-4ac3-4e88-be71-740c79f0b83e_2811e083d5da480094f0d11071a4fb24', url: 'http://metonlinecalc.com/XMPieXMPL_REST_API', circleProjectID:'9d5e29b9-4ac3-4e88-be71-740c79f0b83e', circleProjectName: 'ML_83921' }};

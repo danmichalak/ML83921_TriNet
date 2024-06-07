@@ -1,0 +1,86 @@
+@-webkit-keyframes fadeIn {
+ 	0%   { opacity: 0; }
+ 	100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+ 	0%   { opacity: 0; }
+ 	100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+ 	0%   { opacity: 0; }
+ 	100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+ 	0%   { opacity: 0; }
+ 	100% { opacity: 1; }
+}
+
+@-webkit-keyframes progressBarAnim {
+ 	0%   { width: 0%; }
+ 	100% { width: 100%; }
+}
+
+@-moz-keyframes progressBarAnim {
+ 	0%   { width: 0%; }
+ 	100% { width: 100%; }
+}
+
+@-o-keyframes progressBarAnim {
+ 	0%   { width: 0%; }
+ 	100% { width: 100%; }
+}
+
+@keyframes progressBarAnim {
+ 	0%   { width: 0%; }
+ 	100% { width: 100%; }
+}
+
+
+/* Input Placeholders */
+.has-float-label-en label-en,
+.has-float-label-en>span {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.has-float-label-en input:placeholder-shown:not(:focus)+* {
+    font-size: 14px;
+    opacity: 0.8;
+    top: 0.8em;
+    padding-left: 10px;
+}
+
+
+/* Fade In Elements */
+.fade-in {
+	opacity: 0;
+	-webkit-animation-name: fadeIn 0.5s forwards;
+	-moz-animation-name: fadeIn 0.5s forwards;
+	-o-animation-name: fadeIn 0.5s forwards;
+	animation: fadeIn 0.5s forwards;
+}
+
+
+/* Progress Bar */
+.progress-bar-fill {
+	width: 0%;
+}
+
+.progress-bar-fill.animate {
+	-webkit-animation: progressBarAnim ease-out forwards;
+	-moz-animation: progressBarAnim ease-out forwards;
+	-o-animation: progressBarAnim ease-out forwards;
+	animation: progressBarAnim ease-out forwards;
+
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+	-o-animation-delay: 1s;
+	animation-delay: 1s;
+}
+
+

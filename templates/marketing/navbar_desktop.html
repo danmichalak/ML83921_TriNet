@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row wrapper">
+ 		<div class="homepage-nav">
+			<ul class="homepage-nav__items">
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'landing' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="landing.html">Home</a>
+				</li>
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'life' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="life.html">Life</a>
+				</li>
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'add' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="add.html"><span class="variable-value">{{add_vars.val}}</span></a>
+				</li>
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'dental' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="dental.html">Dental</a>
+				</li>
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'disability' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="disability.html">Disability</a>
+				</li>
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'boe' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="boe.html"><div><span class="variable-value">{{boe_vars.val}}</span> Overhead Expense</div></a>
+				</li>
+				<li class="hompage-nav__item">
+					<a ng-class="activePageLink === 'vision' ? 'active-page homepage-nav__link' : 'homepage-nav__link'" href="vision.html">Vision</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
