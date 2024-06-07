@@ -18,63 +18,37 @@ var xmplOnReady = function() {
             //xmpControllerDriverVar.scope.general_vars.disclaimer_notes = "templates/marketing/life_disclaimer_notes.html";
             xmpControllerDriverVar.scope.general_vars.disclaimer_legal = "templates/marketing/marketing_disclaimer_legal.html";
 
-
-            xmpControllerDriverVar.scope.calcVars = {
-                "age": "",
-                "amount": "",
-                "benefit_duration": "",
-                "elimination_period": "",
+            xmpControllerDriverVar.scope.salary = {
+                "display": "",
+                "annual": "",
+                "monthly": "",
             };
 
-            xmpControllerDriverVar.scope.amtMin = 500;
-            xmpControllerDriverVar.scope.amtMax = 5000;
-            xmpControllerDriverVar.scope.amtInc = 50
-
-            xmpControllerDriverVar.scope.salaryDisplay = "";
-            xmpControllerDriverVar.scope.disSalaryBenefitMax = 0;
-
-            xmpControllerDriverVar.scope.updateVals = function() {
-
-                xmpControllerDriverVar.scope.resetRate();
-
-                xmpControllerDriverVar.scope.amtMax = 5000;
-                let amtVal = 0;
-
-                if (xmpControllerDriverVar.scope.calcVars.amount) {
-                    amtVal = parseInt(xmpControllerDriverVar.scope.calcVars.amount);
-                }
-
-                if (xmpControllerDriverVar.scope.disSalaryBenefitMax && (xmpControllerDriverVar.scope.amtMax > xmpControllerDriverVar.scope.disSalaryBenefitMax)) {
-                    xmpControllerDriverVar.scope.amtMax = xmpControllerDriverVar.scope.disSalaryBenefitMax;
-                }
-
-                if (amtVal && (amtVal > xmpControllerDriverVar.scope.amtMax)) {
-                    xmpControllerDriverVar.scope.calcVars.amount = xmpControllerDriverVar.scope.amtMax;
-                }
-
+            xmpControllerDriverVar.scope.calcRate = {
+                "estimatedLtd": "",
+                "estimatedLtdReplacement": "",
+                "uninsuredIncomeMonthlyGap": "",
+                "monthlyDisabilityGapInsuranceBenefitAvailable": "",
+                "totalMonthlyCoverage": "",
+                "totalLtdDisabilityGapInsuranceReplacement": "",
             };
 
             xmpControllerDriverVar.scope.resetRate = function() {
                 xmpControllerDriverVar.scope.showRates = false;
 
-                xmpControllerDriverVar.scope.calcRate = {};
-                xmpControllerDriverVar.scope.calcRate.base = {
-                    "payroll_deduct": 0,
-                    "direct_bill": 0
-                };
-                xmpControllerDriverVar.scope.calcRate.monthly = {
-                    "payroll_deduct": 0,
-                    "direct_bill": 0
-                };
-                xmpControllerDriverVar.scope.calcRate.annual = {
-                    "payroll_deduct": 0,
-                    "direct_bill": 0
+                xmpControllerDriverVar.scope.calcRate = {
+                    "estimatedLtd": "",
+                    "estimatedLtdReplacement": "",
+                    "uninsuredIncomeMonthlyGap": "",
+                    "monthlyDisabilityGapInsuranceBenefitAvailable": "",
+                    "totalMonthlyCoverage": "",
+                    "totalLtdDisabilityGapInsuranceReplacement": "",
                 };
 
             };
 
             xmpControllerDriverVar.scope.formatSalary = function() {
-                var salaryInput = xmpControllerDriverVar.scope.salaryDisplay;
+                var salaryInput = xmpControllerDriverVar.scope.salary.display;
 
                 if (!salaryInput) {
                     salaryInput = $("#salary_display").val();
@@ -105,8 +79,8 @@ var xmplOnReady = function() {
                     }
                 }
 
-                xmpControllerDriverVar.scope.salaryDisplay = salaryFormatted;
-                $("#salary_display").val(xmpControllerDriverVar.scope.salaryDisplay);
+                xmpControllerDriverVar.scope.salary.display = salaryFormatted;
+                $("#salary_display").val(xmpControllerDriverVar.scope.salary.display);
 
                 xmpControllerDriverVar.scope.checkSalary();
 
@@ -116,7 +90,7 @@ var xmplOnReady = function() {
 
                 xmpControllerDriverVar.scope.disSalaryBenefitMax = 0;
 
-                var salaryInput = xmpControllerDriverVar.scope.salaryDisplay;
+                var salaryInput = xmpControllerDriverVar.scope.salary.display;
 
                 if (!salaryInput) {
                     salaryInput = $("#salary_display").val();
@@ -132,23 +106,16 @@ var xmplOnReady = function() {
 
                     if (salaryTrimmed) {
 
-                        let salaryNum = parseInt(salaryTrimmed);
+                        xmpControllerDriverVar.scope.salary.annual = parseInt(salaryTrimmed);
+                        xmpControllerDriverVar.scope.salary.monthly = xmpControllerDriverVar.scope.salary.annual / 12;
 
-                        let maxBenefit = (salaryNum / 12) * 0.6;
-
-                        xmpControllerDriverVar.scope.disSalaryBenefitMax = Math.floor(maxBenefit / 500) * 500;
-
-                        if (xmpControllerDriverVar.scope.disSalaryBenefitMax > 5000) {
-                            xmpControllerDriverVar.scope.disSalaryBenefitMax = 5000;
-                        } else if (xmpControllerDriverVar.scope.disSalaryBenefitMax < 500) {
-                            xmpControllerDriverVar.scope.disSalaryBenefitMax = 500;
-                        }
+                        console.log("salary", xmpControllerDriverVar.scope.salary);
 
                     }
 
                 }
 
-                xmpControllerDriverVar.scope.updateVals();
+                xmpControllerDriverVar.scope.resetRate();
 
             };
 
@@ -156,38 +123,45 @@ var xmplOnReady = function() {
 
                 xmpControllerDriverVar.scope.resetRate();
 
-                let calcObj = xmpControllerDriverVar.scope.calcVars;
-                let amount = 0;
+                console.log("calcSubmit reached");
 
-                if (calcObj.amount) {
-                    amount = parseInt(calcObj.amount);
+                // copying salary and rates objects for less clutter in calculations
+                let salary = xmpControllerDriverVar.scope.salary;
+                let rates = xmpControllerDriverVar.scope.calcRate;
+
+                // Estimated LTD = Monthly Income * 0.6; Maximum of 12500
+                rates.estimatedLtd = salary.monthly * 0.6;
+                if (rates.estimatedLtd > 12500) {
+                    rates.estimatedLtd = 12500;
                 }
 
-                xmpControllerDriverVar.scope.$parent.getJson("json/disability.json", function(calcResponse) {
-                    let calcData = calcResponse.data;
+                // Estimated LTD Replacement = Estimated LTD / Monthly Income
+                rates.estimatedLtdReplacement = Math.round((rates.estimatedLtd / salary.monthly) * 100) + "%";
 
-                    let rateObj = {
-                        "monthly": {},
-                        "annual": {}
-                    };
+                // Uninsured Income/Monthly Gap = Monthly Income - Estimated LTD
+                rates.uninsuredIncomeMonthlyGap = salary.monthly - rates.estimatedLtd;
 
-                    rateObj.base = xmpControllerDriverVar.scope.$parent.getRate(calcData,calcObj);
+                // Monthly Disability Gap Insurance Benefit Available = Monthly Income * 0.6667; Maximum of 17500; Increment by 50
+                rates.monthlyDisabilityGapInsuranceBenefitAvailable = Math.round(((salary.monthly * 0.667) - rates.estimatedLtd) / 50) * 50;
+                if (rates.monthlyDisabilityGapInsuranceBenefitAvailable > 17500) {
+                    rates.monthlyDisabilityGapInsuranceBenefitAvailable = 17500;
+                }
 
-                    rateObj.monthly.payroll_deduct = rateObj.base.payroll_deduct * (amount / 50);
-                    rateObj.monthly.direct_bill = rateObj.base.direct_bill * (amount / 50);
+                // Total Monthly Coverage = Estimated LTD + Monthly Disability Gap Insurance Benefit Available
+                rates.totalMonthlyCoverage = rates.estimatedLtd + rates.monthlyDisabilityGapInsuranceBenefitAvailable;
 
-                    rateObj.annual.payroll_deduct = rateObj.monthly.payroll_deduct * 12;
-                    rateObj.annual.direct_bill = rateObj.monthly.direct_bill * 12;
+                // Total LTD + Disability Gap Insurance Replacement = Total Monthly Coverage / Monthly Income
+                rates.totalLtdDisabilityGapInsuranceReplacement = Math.round((rates.totalMonthlyCoverage / salary.monthly) * 100) + "%";
 
-                    xmpControllerDriverVar.scope.calcRate = rateObj;
+                console.log("salary", salary);
+                console.log("rates", rates);
+                console.log("calcRate", xmpControllerDriverVar.scope.calcRate);
 
-                    xmpControllerDriverVar.scope.showRates = true;
-                });
+                xmpControllerDriverVar.scope.showRates = true;
 
             };
 
             xmpControllerDriverVar.scope.resetRate();
-            //xmpControllerDriverVar.scope.updateLang(xmpControllerDriverVar.scope.$parent.url_code);
 
         });
     });

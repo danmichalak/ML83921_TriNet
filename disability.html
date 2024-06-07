@@ -47,7 +47,7 @@
     <div class="landing-banner">
         <div class="row wrapper">
             <div class="landing-banner-txt">
-                <h1>Calculate your premium</h1>
+                <h1>Life's Risks</h1>
             </div>
         </div>
         <div class="landing-banner-overlay">
@@ -69,7 +69,6 @@
                     <div class="content-body">
 
                         <form name="calc_form">
-							<h1><strong>Life's Risks</strong></h1>
 							<p>What are the odds of needing to use insurance in an average year?  People often insure against risks that are significantly less likely to occur than a disability.</p>
 							<p><strong>Fire and Theft:</strong> 1 in 238 housing units catch fire or experience theft<sup>1</sup><br>
 							<strong>Car Accidents:</strong> 1 in 147 people get injured in motor vehicle accidents<sup>2</sup><br>
@@ -84,95 +83,8 @@
                                 <div class="row form-row">
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="form-user-grp">
-                                            <div class="form-icon-wrapper">
-                                                <svg class="icon">
-                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
-                                                        <title>select-arrows</title>
-                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
-                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
-                                                    </svg>
-                                                </svg>
-                                                <select class="form-user-ctrl user-select" id="age" name="age" ng-model="calcVars.age" ng-change="updateVals()" required>
-                                                    <option value="" disabled="disabled">Age</option>
-                                                    <option ng-repeat="n in $parent.range(18,64,1)" value="{{n}}">{{n}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row form-row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-user-grp">
-                                            <input type="text" style="margin: 10px 0px 5px 0px;" id="salary_display" name="salary_display" ng-model="salaryDisplay" placeholder="Base Annual Earnings" ng-keypress="formatSalary();" ng-keydown="formatSalary();" ng-keyup="formatSalary();" ng-change="formatSalary();" maxlength="14" required/>
+                                            <input type="text" style="margin: 10px 0px 5px 0px;" id="salary_display" name="salary_display" ng-model="salary.display" placeholder="Base Annual Earnings" ng-keypress="formatSalary();" ng-keydown="formatSalary();" ng-keyup="formatSalary();" ng-change="formatSalary();" maxlength="14" required/>
                                             <div style="color: #A7A8AA;">Do not include overtime, bonus, commissions etc.</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row form-row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-user-grp">
-                                            <div class="form-icon-wrapper">
-                                                <svg class="icon">
-                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
-                                                        <title>select-arrows</title>
-                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
-                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
-                                                    </svg>
-                                                </svg>
-                                                <select class="form-user-ctrl user-select" id="amount" name="amount" ng-model="calcVars.amount" ng-change="updateVals()" required>
-                                                    <option value="" disabled="disabled">Monthly Benefit Election Amount</option>
-                                                    <option ng-repeat="n in $parent.range(amtMin,amtMax,amtInc)" value="{{n}}">${{n | number}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row form-row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-user-grp">
-                                            <div class="form-icon-wrapper">
-                                                <svg class="icon">
-                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
-                                                        <title>select-arrows</title>
-                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
-                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
-                                                    </svg>
-                                                </svg>
-                                                <select class="form-user-ctrl user-select" id="elimination_period" name="elimination_period" ng-model="calcVars.elimination_period" ng-change="updateVals()" required>
-                                                    <option value="" disabled="disabled">Elimination Period</option>
-                                                    <option value="60">60 Days</option>
-                                                    <option value="90">90 Days</option>
-                                                    <option value="120">120 Days</option>
-                                                    <option value="150">150 Days</option>
-                                                    <option value="180">180 Days</option>
-                                                </select>
-                                            </div>
-                                            <div style="color: #A7A8AA;">The amount of time you must be totally disabled due to a covered sickness or injury before benefits will begin to be paid, also known as the waiting period.</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row form-row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-user-grp">
-                                            <div class="form-icon-wrapper">
-                                                <svg class="icon">
-                                                    <svg id="icon-select-arrows" viewBox="0 0 32 32" width="100%" height="100%">
-                                                        <title>select-arrows</title>
-                                                        <path class="path1" d="M7.704 10.827h16l-8-10.827z"></path>
-                                                        <path class="path2" d="M7.704 21.175h16l-8 10.825z"></path>
-                                                    </svg>
-                                                </svg>
-                                                <select class="form-user-ctrl user-select" id="benefit_duration" name="benefit_duration" ng-model="calcVars.benefit_duration" ng-change="updateVals()" required>
-                                                    <option value="" disabled="disabled">Maximum Benefit Period</option>
-                                                    <option value="short">Short-Term Plan</option>
-                                                    <option value="5">5-Year Plan</option>
-                                                    <option value="long">Long-Term Plan</option>
-                                                </select>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -183,11 +95,6 @@
                                     <div class="col-xs-6 col-sm-3">
                                         <div class="form-user-grp">
                                             <a class="btn-brand-6th calc-submit" role="button" ng-click="calcSubmit()" ng-disabled="calc_form.$invalid">Calculate</a>
-                                        </div>
-                                    </div>
-									<div class="col-xs-6 col-sm-3">
-                                        <div class="form-user-grp">
-                                            <a href="https://amba-mags.com/mags/enroll/?APPLICATION=MAGS&FUNCTIONALITY=ENROLLMENT&FIRM=NYSUT&MULTCLIENT=YES&CLIENT=EPS_NYSUT&OFFERING=DI&utm_source=nysut&utm_medium=referral&utm_campaign=105757-dip&utm_content=ratecalculator&PROMOCODE=5479310015301753018" class="btn-brand-6th calc-submit" role="button" target="_blank">ENROLL</a>
                                         </div>
                                     </div>
                                 </div>
@@ -206,32 +113,36 @@
 
                                         <table class="rates-table">
                                             <tr>
-                                                <th>Payment Method</th>
-                                                <th>Payroll Deduction<sup>1</sup></th>
-                                                <th>Direct Bill</th>
+                                                <td><strong>Monthly Income</strong></td>
+                                                <td>{{salary.monthly | currency}}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Monthly Rate Per $50</strong></td>
-                                                <td>{{calcRate.base.payroll_deduct | currency}}</td>
-                                                <td>{{calcRate.base.direct_bill | currency}}</td>
+                                                <td><strong>Estimated LTD</strong></td>
+                                                <td>{{calcRate.estimatedLtd | currency}}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Monthly Premium</strong></td>
-                                                <td>{{calcRate.monthly.payroll_deduct | currency}}</td>
-                                                <td>{{calcRate.monthly.direct_bill | currency}}</td>
+                                                <td><strong>Estimated LTD Replacement</strong></td>
+                                                <td>{{calcRate.estimatedLtdReplacement}}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Annual Premium</strong></td>
-                                                <td>{{calcRate.annual.payroll_deduct | currency}}</td>
-                                                <td>{{calcRate.annual.direct_bill | currency}}</td>
+                                                <td><strong>Uninsured Income/Monthly Gap</strong></td>
+                                                <td>{{calcRate.uninsuredIncomeMonthlyGap | currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Monthly Disability Gap Insurance Benefit Available</strong></td>
+                                                <td>{{calcRate.monthlyDisabilityGapInsuranceBenefitAvailable | currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Monthly Coverage</strong></td>
+                                                <td>{{calcRate.totalMonthlyCoverage | currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total LTD + Disability Gap Insurance  Replacement</strong></td>
+                                                <td>{{calcRate.totalLtdDisabilityGapInsuranceReplacement}}</td>
                                             </tr>
                                         </table>
 
                                     </div>
-                                </div>
-
-                                <div ng-if="showRates">
-                                    <span style="font-size: 12px; line-height: 10px; color: #757878;">1. Payroll Deduction includes a 20% discount for the Long-Term and 5-Year plans.</span>
                                 </div>
 
                             </div>
