@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="14fc8b8c-cb86-4a53-88da-194644e3cf32" name="ML83921_TriNet">
+        <fileTransfer rootFolder="/ML83921" accessType="SFTP" host="104.211.41.155" port="22" sshConfigId="b20b0a9e-3f44-4fb2-9557-ba6224c21473" sshConfig="dan_temp@104.211.41.155:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
